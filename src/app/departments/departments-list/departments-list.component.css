@@ -1,0 +1,43 @@
+/* CSS for the table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+/* CSS for table headers */
+.table th {
+  background-color: #708de3;
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+/* CSS for alternating row colors */
+.odd {
+  background-color: #f9f9f9;
+}
+
+.even {
+  background-color: #e0e0e0;
+}
+
+/* CSS for table data cells */
+.table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+/* CSS for the select button */
+.btnSelect {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.btnSelect:hover {
+  background-color: #0056b3;
+}

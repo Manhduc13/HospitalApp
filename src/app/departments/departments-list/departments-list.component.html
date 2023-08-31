@@ -1,0 +1,27 @@
+<div>
+    <table class="table">
+        <tr>
+            <th>STT</th>
+            <th>Mã khoa</th>
+            <th>Tên khoa</th>
+            <th>Số lượng nhân viên</th>
+            <th>Ngày tạo</th>
+            <th>Ngày kết thúc</th>
+            <th>Chọn khoa</th>
+        </tr>
+        <tr [ngClass]="e ? 'even' : 'odd'"
+            *ngFor="let department of departmentList; let i = index; let e = even; let o = odd">
+            <td>{{i + 1}}</td>
+            <td>{{department.id}}</td>
+            <td>{{department.name | uppercase}}</td>
+            <td>{{department.numberOfEmployee}}</td>
+            <td>{{department.checkedIn | date : 'dd/MM/yyyy'}}</td>
+            <td>{{department.checkedOut | date : 'dd/MM/yyyy'}}</td>
+            <td>
+                <button class = "btnSelect" (click) = "selectDepartment(department)">
+                    Chọn
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
