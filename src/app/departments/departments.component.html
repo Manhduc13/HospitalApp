@@ -1,15 +1,14 @@
 <div class="container">
     <div class="department-section">
         <h2>Thông tin bệnh viện</h2>
-        <p [hidden]="hideDepartment">Số khoa trong bệnh viện: <span >{{ numberOfDepartments }}</span>
+        <p [hidden]="hideDepartment">Số khoa trong bệnh viện: <span>{{ numberOfDepartments }}</span>
         </p>
         <button class="button" (click)="toggle()">Ẩn thông tin</button>
     </div>
 
-    <div *ngIf = "selectedDepartment">
-        {{selectedDepartment|json}}
+    <div>
+        <button class="button" (click)="addDepartment()">Them Khoa</button>
     </div>
-
     <div *ngIf="departmentList" class="department-list">
 
         <h2>Danh sách các khoa trong bệnh viện</h2>
@@ -17,12 +16,18 @@
         <div [hidden]="hideListView" class="list" *ngFor="let department of departmentList; let i = index">
             <p>{{i + 1}}. {{department.name}}</p>
         </div>
+
         <div [hidden]="hideTableView">
-            <app-departments-list [departmentList]="departmentList" (selectedDepartment)="selectDepartment($event)">
+            <app-departments-list [departmentList]="departmentList" (selectedDepartment)="selectDepartment($event)" [title]="title">
 
             </app-departments-list>
         </div>
 
     </div>
+
     <button class="button" (click)="switch()">Chuyển đổi chế độ xem</button>
+
+    <div *ngIf="selectedDepartment">
+        {{selectedDepartment|json}}
+    </div>
 </div>

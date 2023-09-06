@@ -1,22 +1,31 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { department } from '../department';
 
 @Component({
   selector: 'app-departments-list',
   templateUrl: './departments-list.component.html',
-  styleUrls: ['./departments-list.component.css']
+  styleUrls: ['./departments-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class DepartmentsListComponent implements OnInit{
-
-  @Input() departmentList : department[] = [];
-
-  @Output() selectedDepartment = new EventEmitter<department>(); 
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+export default class DepartmentsListComponent implements OnInit, OnChanges, DoCheck {
+  ngDoCheck(): void {
+    console.log("on change is called");
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
   }
 
-  selectDepartment(department : department){
+  @Input() departmentList: department[] = [];
+
+  @Input() title:string='';
+
+  @Output() selectedDepartment = new EventEmitter<department>();
+
+  ngOnInit(): void {
+
+  }
+
+  selectDepartment(department: department) {
     this.selectedDepartment.emit(department);
   }
 }

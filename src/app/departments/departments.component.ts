@@ -14,6 +14,7 @@ export class DepartmentsComponent implements OnInit {
   hideTableView!: any;
   departmentList: department[] = [];
   selectedDepartment!: department;
+  title:string = '12345';
   constructor() { }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class DepartmentsComponent implements OnInit {
 
   toggle() {
     this.hideDepartment = !this.hideDepartment;
+    this.title = "123456";
   }
 
   switch() {
@@ -43,5 +45,17 @@ export class DepartmentsComponent implements OnInit {
   selectDepartment(department: department) {
     this.selectedDepartment = department;
     console.log(department);
+  }
+
+  addDepartment() {
+    const department: department = {
+      id: 37529,
+      name: "Khoa nhi",
+      numberOfEmployee: 10,
+      checkedIn: new Date('24-Aug-2023'),
+      checkedOut: new Date('28-Aug-2023')
+    }
+    //this.departmentList.push(department);
+    this.departmentList = [...this.departmentList,department];
   }
 }
